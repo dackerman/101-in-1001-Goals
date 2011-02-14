@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<a href="{% url goal-list %}">&lt;&lt;Back to Goals</a>
+<form method='post' action=''>
+{% csrf_token %}
+{% for task in tasks %}
+	<p>
+		<input type="checkbox" name="complete" value="{{ task.id }}"/>
+		<a href="{% url view-goal task.parent.id %}" title="Goal: {{ task.parent.name }}">{{ task.name }}</a>
+	</p>
+{% endfor %}
+<input type="submit">
+</form>
+{% endblock %}

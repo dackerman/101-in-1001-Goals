@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<a href="{% url goal-list %}">&lt;&lt;Back to Goals</a>
+<a href="{% url view-tasks %}">Show Tasks</a>
+
+<h1>
+	{{ goal.name }}
+	<form method='post' action='{% url delete-goal %}'>
+		<input type="hidden" name="delete" value="{{ goal.id }}">
+		{% csrf_token %}
+		<input value="Delete" type="submit" />
+	</form>
+</h1>
+<h2>Completion Date: {{ goal.deadline }}</h2>
+
+<form method="post" action="">
+	{{ formset.management_form }}
+	{% csrf_token %}
+	<table>
+		<thead>
+			<th>Task</th>
+			<th>Current</th>
+			<th>Done</th>
+			<th>Order</th>
+			<th>Delete</th>
+		</thead>
+	{% for form in formset.forms %}
+		<tr>
+		{% for field in form %}
+		<td>{{ field }}</td>
+		{% endfor %}
+		</tr>
+	{% endfor %}
+	</table>
+	<input type="submit" />
+</form>
+{% endblock %}

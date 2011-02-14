@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<a href="{% url view-tasks %}">Show Tasks</a>
+
+{% for error_category in errors %}
+	{{ error_category }}
+{% endfor %}
+<h2>Goals</h2>
+<table>
+	{% for goal in goals %}
+		{% url view-goal goal.id as goal_url %}
+		<tr><td><a href="{{ goal_url }}">{{ goal.name }}</a></td></tr>
+	{% endfor %}
+</table>
+
+<form method="post" action="">{% csrf_token %}
+	{{ goalform }}
+	<input type="submit" />
+</form>
+{% endblock %}
