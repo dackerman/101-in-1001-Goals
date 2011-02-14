@@ -9,12 +9,30 @@ from django.forms import ModelForm
 from django.forms.formsets import formset_factory
 from django.forms.models import modelformset_factory
 from django.core.context_processors import csrf
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 class GoalForm(ModelForm):
     deadline = forms.DateField(label="Due", initial=datetime.date.today)
     class Meta:
         model = Goal
 
+class TaskForm(ModelForm):
+    class Meta:
+        model = TodoItem
+        exclude = ('parent',)
+        widgets = {
+            'name': forms.TextInput(attrs={'size':'70'})
+        }
+        
+def new_user(request):
+    if request.method == 'POST':
+        user = User.objects.create_user(request.POST['name'], request.POST['email'], request.POST['password'])
+        user.save()
+    return redirect('login')
+    
+        
+@login_required
 def list_goals(request):
     if request.method == 'POST':
         goal = GoalForm(request.POST)
@@ -28,15 +46,9 @@ def list_goals(request):
     }
     template_data.update(csrf(request))
     return render_to_response('todolist/list_goals.html', template_data)
-    
-
-class TaskForm(ModelForm):
-    class Meta:
-        model = TodoItem
-        exclude = ('parent',)
-        widgets = {'name': forms.TextInput(attrs={'size':'70'})}
 
 
+@login_required
 def view_goal(request, goal_id):
     goal = Goal.objects.get(id=goal_id)
     TaskFormSet = modelformset_factory(TodoItem,
@@ -57,14 +69,16 @@ def view_goal(request, goal_id):
     return render_to_response('todolist/view_goal.html', template_data)
 
 
+@login_required
 def delete_goal(request):
     if request.method == 'POST':
         goal_id = request.POST.get('delete')
         goal = Goal.objects.get(pk=int(goal_id))
         goal.delete()
-    redirect('goal-list')
+    return redirect('goal-list')
 
 
+@login_required
 def view_tasks(request):
     tasks = TodoItem.objects.filter(is_complete=False, is_current=True)
     if request.method == 'POST':

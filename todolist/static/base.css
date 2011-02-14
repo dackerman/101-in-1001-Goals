@@ -1,0 +1,54 @@
+body{
+    font-family:Verdana,sans-serif;
+    font-size:90%;
+}
+
+a:link{
+    color:#4878A6;
+}
+a:visited{
+    color:#8A9096;
+}
+a:hover{
+    color:#ACB6BF;
+}
+a:active{
+    color:#4878A6
+}
+
+.nav_links, table{
+    margin-bottom:10px;
+}
+
+h1, h2{
+    color:#4878A6;
+}
+
+input[type="submit"]{
+    width:150px;
+    margin:5px;
+}
+
+table{
+    border-spacing:0px;
+    border:2px solid black;
+    border-radius:5px;
+}
+
+td{
+    padding:5px;
+}
+
+th{
+    background-color:#4878A6;
+    color:white;
+    padding:5px;
+}
+
+.odd{
+    background-color:#ddeeff;
+}
+
+.even{
+    background-color:#ffffff;
+}

@@ -77,6 +77,8 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'todoapp.urls'
 
+STATIC_DOC_ROOT = '/Users/dackerman/code/todoapp/todolist/static/'
+
 TEMPLATE_DIRS = (
     "/Users/dackerman/code/todoapp/templates"
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".

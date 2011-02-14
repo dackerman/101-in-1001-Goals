@@ -1,15 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
-<a href="{% url goal-list %}">&lt;&lt;Back to Goals</a>
+<div class='nav_links'>
+	<a href="{% url goal-list %}">&lt;&lt;Back to Goals</a>
+</div>
 <form method='post' action=''>
 {% csrf_token %}
+<table>
+	<thead>
+		<th>Tasks</th>
+	</thead>
 {% for task in tasks %}
-	<p>
-		<input type="checkbox" name="complete" value="{{ task.id }}"/>
-		<a href="{% url view-goal task.parent.id %}" title="Goal: {{ task.parent.name }}">{{ task.name }}</a>
-	</p>
+<tr>
+<td class="{% cycle 'odd' 'even' %}">
+	<input type="checkbox" name="complete" value="{{ task.id }}"/>
+	<a href="{% url view-goal task.parent.id %}" title="Goal: {{ task.parent.name }}">{{ task.name }}</a>
+</td>
+</tr>
 {% endfor %}
+</table>
 <input type="submit">
 </form>
 {% endblock %}

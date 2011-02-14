@@ -1,21 +1,33 @@
 {% extends "base.html" %}
 
 {% block content %}
-<a href="{% url view-tasks %}">Show Tasks</a>
+<div class='nav_links'>
+	<a href="{% url view-tasks %}">Show Tasks</a>
+</div>
 
-{% for error_category in errors %}
-	{{ error_category }}
-{% endfor %}
+<div id="goal_list">
 <h2>Goals</h2>
-<table>
-	{% for goal in goals %}
-		{% url view-goal goal.id as goal_url %}
-		<tr><td><a href="{{ goal_url }}">{{ goal.name }}</a></td></tr>
-	{% endfor %}
-</table>
+	<table>
+		<thead>
+			<th>Goal</th>
+			<th>Due</th>
+		</thead>
+		{% if goals %}
+			{% for goal in goals %}
+				{% url view-goal goal.id as goal_url %}
+				<tr class="{% cycle 'odd' 'even' %}"><td><a href="{{ goal_url }}">{{ goal.name }}</a></td><td>{{ goal.deadline }}</td></tr>
+			{% endfor %}
+		{% else %}
+			<tr><td>You don't have any goals yet.</td></tr>
+		{% endif %}
+	</table>
+</div>
 
-<form method="post" action="">{% csrf_token %}
-	{{ goalform }}
-	<input type="submit" />
-</form>
+<div id="new_goal">
+	<h2>Create a New Goal</h2>
+	<form method="post" action="">{% csrf_token %}
+		{{ goalform }}
+		<input type="submit" />
+	</form>
+</div>
 {% endblock %}
