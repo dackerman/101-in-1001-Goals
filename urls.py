@@ -9,7 +9,7 @@ from django.conf import settings
 
 
 urlpatterns = patterns('',
-    url(r'^%s$' % settings.LOGIN_URL, 'django.contrib.auth.views.login', name='login'),
+    url(r'^login/$', 'django.contrib.auth.views.login', name='login'),
     url(r'^$', 'django.contrib.auth.views.logout_then_login', name='logout'),
     url(r'^accounts/new/$', todolist.views.new_user, name='new-user'),
     (r'^$', todolist.views.list_goals),

@@ -16,6 +16,18 @@ class Goal(models.Model):
     deadline = models.DateTimeField("Due", 'completion date')
     category = models.ForeignKey(Category, null=True, blank=True)
 
+    def percent_complete(self):
+        tasks = TodoItem.objects.filter(parent=self)
+        total_tasks = 0
+        total_complete = 0
+        for task in tasks:
+            total_tasks += 1
+            if task.is_complete:
+                total_complete += 1
+        if not total_tasks:
+            return float(0)
+        return 100 * total_complete / total_tasks
+
 class TodoItem(models.Model):
     parent = models.ForeignKey(Goal)
     name = models.CharField("Task", max_length=200)

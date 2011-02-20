@@ -59,6 +59,15 @@ h1, h2{
     color:#4878A6;
 }
 
+.num_tasks{
+    font-size:90%;
+    font-weight:normal;
+}
+
+.no_tasks{
+    color:red;
+}
+
 input[type="submit"], input[type="button"]{
     margin:5px;
 }

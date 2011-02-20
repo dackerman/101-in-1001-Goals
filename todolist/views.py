@@ -112,7 +112,8 @@ def delete_goal(request, goal_id):
 
 @login_required
 def view_tasks(request):
-    tasks = TodoItem.objects.filter(is_complete=False, is_current=True)
+    tasks = TodoItem.objects.filter(
+        is_complete=False, is_current=True).order_by('name')
     if request.method == 'POST':
         print request.POST
         for task_id in request.POST.getlist('complete'):

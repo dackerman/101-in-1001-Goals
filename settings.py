@@ -79,7 +79,7 @@ ROOT_URLCONF = 'todoapp.urls'
 
 STATIC_DOC_ROOT = 'D:/Code/todoapp/todolist/static/'
 
-LOGIN_URL = 'login/'
+LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/goals/'
 
 TEMPLATE_DIRS = (

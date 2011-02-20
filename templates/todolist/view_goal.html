@@ -42,7 +42,9 @@ $('#del_button').button({
 	</script>
 </div>
 
-<h2 id="current_goal" style="float:none;clear:both">{{ goal.name }} (by {{ goal.deadline|date:"M dS, Y" }})</h2>
+<h2 id="current_goal" style="float:none;clear:both">
+        {{ goal.name }} (by {{ goal.deadline|date:"M dS, Y" }})
+</h2>
 <div id="edit_button">Edit</div>
 <div id="del_button">Delete</div>
 
