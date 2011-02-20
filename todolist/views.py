@@ -56,6 +56,7 @@ def list_goals(request):
         'categories': categories,
         'goals_without_categories': goals_without_categories,
         'goalform': GoalForm(),
+        'goal_length': Goal.objects.all().count(),
     }
     return render(request, 'todolist/list_goals.html', template_data)
 
@@ -103,9 +104,8 @@ def view_goal(request, goal_id):
 
 
 @login_required
-def delete_goal(request):
+def delete_goal(request, goal_id):
     if request.method == 'POST':
-        goal_id = request.POST.get('delete')
         goal = Goal.objects.get(pk=int(goal_id))
         goal.delete()
     return redirect('goal-list')

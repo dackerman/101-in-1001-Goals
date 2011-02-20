@@ -1,6 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+<h2 style="float:right">Create a New Goal</h2>
+<div id="new_goal" class="edit_box" style="float:right;clear:both">
+	<form method="post" action="">{% csrf_token %}
+		{{ goalform.as_p }}
+		<input type="submit" />
+	</form>
+</div>
+
+<h1>{{ goal_length }} goals total</h1>
 <ol>
 {% for category in categories %}
         <li><h2>{{ category.name }}</h2></li>
@@ -23,14 +33,6 @@
         {% include "todolist/goal_row.html" %}
 {% endfor %}
 {% endif %}
-
 </ol>
 
-<h2>Create a New Goal</h2>
-<div id="new_goal" class="edit_box">
-	<form method="post" action="">{% csrf_token %}
-		{{ goalform.as_p }}
-		<input type="submit" />
-	</form>
-</div>
 {% endblock %}

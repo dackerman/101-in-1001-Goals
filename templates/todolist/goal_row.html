@@ -1,2 +1,7 @@
 {% url view-goal goal.id as goal_url %}
-<li><h3><a href="{{ goal_url }}" title="due {{ goal.deadline }}">{{ goal.name }}</a></h3></li>
+<li>
+    <h3>
+        <a href="{{ goal_url }}" title="due {{ goal.deadline }}">{{ goal.name }}</a>
+        ({{ goal.todoitem_set.count }} tasks)
+    </h3>
+</li>
