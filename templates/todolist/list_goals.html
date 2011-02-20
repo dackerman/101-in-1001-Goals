@@ -1,35 +1,30 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+<ol>
 {% for category in categories %}
-        <div class="goal_list">
-        <h2>{{ category.name }}</h2>
-        <table>
-        <thead>
-                <th></th>
-        	<th>Goal</th>
-        	<th>Due</th>
-        </thead>
+        <li><h2>{{ category.name }}</h2></li>
+        <ol>
         {% with category.goal_set.all as goals %}
         {% if goals %}
         	{% for goal in goals  %}
         		{% include "todolist/goal_row.html" %}
         	{% endfor %}
         {% else %}
-        	<tr><td colspan=3>You don't have any goals for {{ category.name }} yet.</td></tr>
+        	<li>You don't have any goals for {{ category.name }} yet.</li>
         {% endif %}
         {% endwith %}
-        </table>
-        </div>
+        </ol>
 {% endfor %}
 
-<div class="goal_list">
-<h2>Goals without Categories</h2>
+{% if goals_without_categories %}
+<li><h2>No Category</h2></li>
 {% for goal in goals_without_categories %}
-        <p><a href="{% url view-goal goal.id %}">{{ goal.name }}</a></p>
+        {% include "todolist/goal_row.html" %}
 {% endfor %}
-</div>
+{% endif %}
+
+</ol>
 
 <h2>Create a New Goal</h2>
 <div id="new_goal" class="edit_box">

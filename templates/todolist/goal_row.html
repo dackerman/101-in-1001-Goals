@@ -1,8 +1,2 @@
 {% url view-goal goal.id as goal_url %}
-<tr class="{% cycle 'odd' 'even' %}">
-        <td>{{ forloop.counter }}.</td>
-	<td>
-                <a style="float:left" href="{{ goal_url }}">{{ goal.name }}</a>
-	</td>
-	<td>{{ goal.deadline|date:"l, dS M Y"}}</td>
-</tr>
+<li><h3><a href="{{ goal_url }}" title="due {{ goal.deadline }}">{{ goal.name }}</a></h3></li>
