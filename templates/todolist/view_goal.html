@@ -23,7 +23,7 @@ $('#del_button').button({
 
 {% block content %}
 <div id="edit_goal" class="editform" style="display:none">
-	<form method="post" action="{% url edit-goal goal.id %}">
+	<form method="post" action="{% url edit-goal goal.id %}" style="float:none">
 		{% csrf_token %}
 		{{ goalform }}
 		<input style="display:inline" type="submit" />
@@ -78,16 +78,4 @@ $('#del_button').button({
 		</tfoot>
 	</table>
 </form>
-
-<div class="edit_box">
-<h2>Tags</h2>
-<form method="post" action="{% url update-tags goal.id %}">
-	{{ tagformset.management_form }}
-	{% csrf_token %}
-	{% for tagform in tagformset.forms %}
-		<p>{{ tagform }}</p>
-	{% endfor %}
-	<input type="submit" />
-</form>
-</div>
 {% endblock %}

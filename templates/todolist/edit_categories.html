@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block nav_links %}
+<a href="{% url goal-list %}">&lt;&lt;Back to Goals</a>
+{% endblock %}
+{% block content %}
+
+<h2>Categories</h2>
+    <form method="POST" action="">
+    {{ formset.management_form }}
+    {% csrf_token %}
+    {% for form in formset.forms %}
+        <p>{{ form }}</p>
+    {% endfor %}
+    <input type="submit" value="Update Categories" />
+</form>
+
+{% endblock %}

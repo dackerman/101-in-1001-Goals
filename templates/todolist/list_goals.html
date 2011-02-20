@@ -2,27 +2,39 @@
 
 {% block content %}
 
-<div id="goal_list">
-<h2>Goals</h2>
-	<table>
-		<thead>
-			<th>Goal</th>
-			<th>Due</th>
-		</thead>
-		{% if goals %}
-			{% for goal in goals %}
-				{% include "todolist/goal_row.html" %}
-			{% endfor %}
-		{% else %}
-			<tr><td>You don't have any goals yet.</td></tr>
-		{% endif %}
-	</table>
+{% for category in categories %}
+        <div class="goal_list">
+        <h2>{{ category.name }}</h2>
+        <table>
+        <thead>
+                <th></th>
+        	<th>Goal</th>
+        	<th>Due</th>
+        </thead>
+        {% with category.goal_set.all as goals %}
+        {% if goals %}
+        	{% for goal in goals  %}
+        		{% include "todolist/goal_row.html" %}
+        	{% endfor %}
+        {% else %}
+        	<tr><td colspan=3>You don't have any goals for {{ category.name }} yet.</td></tr>
+        {% endif %}
+        {% endwith %}
+        </table>
+        </div>
+{% endfor %}
+
+<div class="goal_list">
+<h2>Goals without Categories</h2>
+{% for goal in goals_without_categories %}
+        <p><a href="{% url view-goal goal.id %}">{{ goal.name }}</a></p>
+{% endfor %}
 </div>
 
+<h2>Create a New Goal</h2>
 <div id="new_goal" class="edit_box">
-	<h2>Create a New Goal</h2>
 	<form method="post" action="">{% csrf_token %}
-		{{ goalform }}
+		{{ goalform.as_p }}
 		<input type="submit" />
 	</form>
 </div>

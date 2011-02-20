@@ -12,7 +12,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'sqlite3_db',                      # Or path to database file if using sqlite3.
+        'NAME': 'D:/Code/todoapp/sqlite3_db',                      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -77,13 +77,13 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'todoapp.urls'
 
-STATIC_DOC_ROOT = '/Users/dackerman/code/todoapp/todolist/static/'
+STATIC_DOC_ROOT = 'D:/Code/todoapp/todolist/static/'
 
 LOGIN_URL = 'login/'
 LOGIN_REDIRECT_URL = '/goals/'
 
 TEMPLATE_DIRS = (
-    "/Users/dackerman/code/todoapp/templates"
+    "D:/Code/todoapp/templates"
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.

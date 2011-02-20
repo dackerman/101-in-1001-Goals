@@ -49,10 +49,11 @@ table{
 
 h1, h2{
     color:#4878A6;
+    float:left;
+    clear:both;
 }
 
 input[type="submit"], input[type="button"]{
-    width:100px;
     margin:5px;
 }
 
@@ -96,6 +97,20 @@ table{
     border-spacing:0px;
     border:2px solid black;
     border-radius:5px;
+}
+
+.goal_list{
+    float:left;
+    clear:both;
+}
+
+.goal_list table{
+    min-width:800px;
+}
+
+form{
+    float:left;
+    clear:both;
 }
 
 td{

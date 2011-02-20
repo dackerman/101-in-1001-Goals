@@ -18,6 +18,7 @@
 	<div class="nav_links">
 		{% block nav_links %}{% endblock %}
 		<a href="{% url view-tasks %}">Show Tasks</a>
+		<a href="{% url update-categories %}">Edit Categories</a>
 		<div class="profile_info">
 			<a href="{% url logout %}">username: {{ username }}</a>
 		</div>

@@ -1,9 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.shortcuts import redirect
-from todolist.models import Goal
-from todolist.models import TodoItem
-from todolist.models import Tag
+from todolist.models import *
 import datetime
 from django import forms
 from django.forms import ModelForm
@@ -51,21 +49,15 @@ def list_goals(request):
         goal = GoalForm(request.POST)
         goal.save()
 
-    goals = Goal.objects.all()
+    categories = Category.objects.all()
+    goals_without_categories = Goal.objects.all().filter(category=None)
 
     template_data = {
-        'goals': goals,
+        'categories': categories,
+        'goals_without_categories': goals_without_categories,
         'goalform': GoalForm(),
     }
     return render(request, 'todolist/list_goals.html', template_data)
-    
-@login_required
-def view_tag(request, tag_name):
-    tags = Tag.objects.all().filter(name=tag_name)
-    goals = []
-    for tag in tags:
-        goals.append(tag.goal)
-    return render(request, 'todolist/view_tag.html', {'goals': goals, 'tag': tag_name})
 
 @login_required
 def edit_goal(request, goal_id):
@@ -77,11 +69,21 @@ def edit_goal(request, goal_id):
     return redirect('view-goal', goal_id)
 
 @login_required
+def update_categories(request):
+    CategoryFormSet = modelformset_factory(Category, can_delete=True)
+    if request.method == 'POST':
+        categories = CategoryFormSet(request.POST)
+        categories.save()
+
+    template_data = {
+        'formset': CategoryFormSet()
+    }
+    return render(request, 'todolist/edit_categories.html', template_data)
+
+@login_required
 def view_goal(request, goal_id):
     goal = Goal.objects.get(pk=goal_id)
     goalform = GoalForm(instance=goal)
-    TagFormset = inlineformset_factory(Goal, Tag)
-    tags = TagFormset(instance=goal)
     TaskFormSet = modelformset_factory(TodoItem,
         form=TaskForm,
         can_order=True,
@@ -95,7 +97,6 @@ def view_goal(request, goal_id):
     template_data = {
         'goal': goal,
         'goalform': goalform,
-        'tagformset': tags,
         'formset': TaskFormSet(queryset=TodoItem.objects.filter(parent=goal)),
     }
     return render(request, 'todolist/view_goal.html', template_data)
@@ -124,13 +125,5 @@ def view_tasks(request):
     }
     template_data.update(csrf(request))
     return render(request, 'todolist/view_tasks.html', template_data)
-    
-@login_required
-def update_tags(request, goal_id):
-    if(request.method == 'POST'):
-        goal = Goal.objects.get(pk=goal_id)
-        TagFormset = inlineformset_factory(Goal, Tag)
-        tags = TagFormset(request.POST, instance=goal)
-        tags.save()
-    return redirect('view-goal', goal_id)
+
 
