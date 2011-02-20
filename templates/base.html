@@ -20,7 +20,7 @@
 		<a href="{% url view-tasks %}">Show Tasks</a>
 		<a href="{% url update-categories %}">Edit Categories</a>
 		<div class="profile_info">
-			<a href="{% url logout %}">username: {{ username }}</a>
+			<a href="{% url logout %}">logout {{ username }}</a>
 		</div>
 	</div>
 	<div id="content">{% block content %}{% endblock %}</div>

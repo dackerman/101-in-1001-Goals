@@ -6,20 +6,16 @@
 
 {% block content %}
 <form method='post' action=''>
+<input type="submit" value="Update Tasks">
 {% csrf_token %}
-<table>
-	<thead>
-		<th>Tasks</th>
-	</thead>
+<ol>
 {% for task in tasks %}
-<tr>
-<td class="{% cycle 'odd' 'even' %}">
-	<input type="checkbox" name="complete" value="{{ task.id }}"/>
-	<a href="{% url view-goal task.parent.id %}" title="Goal: {{ task.parent.name }}">{{ task.name }}</a>
-</td>
-</tr>
+	<li>
+            <input type="checkbox" name="complete" value="{{ task.id }}"/>
+            <a href="{% url view-goal task.parent.id %}" title="Goal: {{ task.parent.name }}">{{ task.name }}</a>
+        </li>
 {% endfor %}
-</table>
-<input type="submit">
+</ol>
+<input type="submit" value="Update Tasks">
 </form>
 {% endblock %}

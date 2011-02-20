@@ -60,16 +60,18 @@ $('#del_button').button({
 			<th>Task</th>
 			<th>Current</th>
 			<th>Done</th>
-			<th>Order</th>
 			<th>Delete</th>
 		</thead>
 		{% for form in formset.forms %}
 			{{ form.id }}
-			<tr class="{% cycle 'odd' 'even' %}">
+			{% if forloop.last %}
+                            <tr class="last">
+                        {% else %}
+                            <tr class="{% cycle 'odd' 'even' %}">
+                        {% endif %}
 				<td>{{ form.name }}</td>
 				<td>{{ form.is_current }}</td>
 				<td>{{ form.is_complete }}</td>
-				<td>{{ form.ORDER }}</td>
 				<td>{{ form.DELETE }}</td>
 			</tr>
 		{% endfor %}

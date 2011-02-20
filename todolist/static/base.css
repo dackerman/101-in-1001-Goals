@@ -12,15 +12,23 @@ body{
 .nav_links{
     margin-bottom:10px;
     padding:5px;
-    background-color:#333333;
+    background-color:#333;
 }
 
-.nav_links > a:link{
+.nav_links a{
+    margin-left:10px;
+}
+
+.nav_links a:link{
     color:white;
 }
 
-.nav_links > a:visited{
+.nav_links a:visited{
     color:white;
+}
+
+.nav_links a:hover{
+    color:4878A6;
 }
 
 a:link{
@@ -28,11 +36,11 @@ a:link{
 }
 
 a:visited{
-    color:#4A5056;
+    color:#4878A6;
 }
 
 a:hover{
-    color:#ACB6BF;
+    color:#000;
 }
 
 a:active{
@@ -106,6 +114,17 @@ table{
     min-width:800px;
 }
 
+.new_goal{
+    float:right;
+    clear:both;
+    padding:5px;
+}
+
+.new_goal_text{
+    color:#333;
+    float:right;
+}
+
 form{
     float:left;
     clear:both;
@@ -127,4 +146,8 @@ th, tfoot td{
 
 .even{
     background-color:#ffffff;
+}
+
+.last{
+    background-color:#aaffaa;
 }

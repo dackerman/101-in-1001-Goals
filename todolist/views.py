@@ -18,10 +18,10 @@ def render(request, template, data):
     return render_to_response(template, data)
 
 class GoalForm(ModelForm):
-    def next_year():
-        return datetime.date.today() + datetime.timedelta(365)
+    def two_years():
+        return datetime.date.today() + datetime.timedelta(365*2)
         
-    deadline = forms.DateField(label="Due", initial=next_year)
+    deadline = forms.DateField(label="Due", initial=two_years)
     class Meta:
         model = Goal
         widgets = {
@@ -87,8 +87,7 @@ def view_goal(request, goal_id):
     goalform = GoalForm(instance=goal)
     TaskFormSet = modelformset_factory(TodoItem,
         form=TaskForm,
-        can_order=True,
-        can_delete=True, extra=2, max_num=10)
+        can_delete=True, extra=1)
         
     if request.method == 'POST':
         instances = TaskFormSet(request.POST).save(commit=False)
