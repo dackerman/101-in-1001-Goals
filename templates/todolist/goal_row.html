@@ -1,0 +1,12 @@
+{% url view-goal goal.id as goal_url %}
+<tr class="{% cycle 'odd' 'even' %}">
+	<td>
+		<a style="float:left" href="{{ goal_url }}">{{ goal.name }}</a>
+		{% for tag in goal.tag_set.all %}
+			<div class="goal_tag" style="background-color:{{ tag.color }}">
+				<a href="{% url view-tag tag.name %}">{{ tag.name }}</a>
+			</div>
+		{% endfor %}
+	</td>
+	<td>{{ goal.deadline|date:"l, dS M Y"}}</td>
+</tr>

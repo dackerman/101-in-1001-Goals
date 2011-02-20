@@ -14,16 +14,9 @@
 				{% include "todolist/goal_row.html" %}
 			{% endfor %}
 		{% else %}
-			<tr><td>You don't have any goals yet.</td></tr>
+			<tr><td>You don't have any goals with the tag {{ tag }}.</td></tr>
 		{% endif %}
 	</table>
 </div>
 
-<div id="new_goal" class="edit_box">
-	<h2>Create a New Goal</h2>
-	<form method="post" action="">{% csrf_token %}
-		{{ goalform }}
-		<input type="submit" />
-	</form>
-</div>
 {% endblock %}

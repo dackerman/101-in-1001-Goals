@@ -9,13 +9,17 @@ from django.conf import settings
 
 
 urlpatterns = patterns('',
-    url(r'^accounts/login/$', 'django.contrib.auth.views.login', name='login'),
+    url(r'^%s$' % settings.LOGIN_URL, 'django.contrib.auth.views.login', name='login'),
+    url(r'^$', 'django.contrib.auth.views.logout_then_login', name='logout'),
     url(r'^accounts/new/$', todolist.views.new_user, name='new-user'),
     (r'^$', todolist.views.list_goals),
     url(r'^goals/$', todolist.views.list_goals, name='goal-list'),
     url(r'^goal/(\d+)/$', todolist.views.view_goal, name='view-goal'),
-    url(r'^goal/delete/$', todolist.views.delete_goal, name='delete-goal'),
+    url(r'^goal/(\d+)/edit/$', todolist.views.edit_goal, name='edit-goal'),
+    url(r'^goal/(\d+)/delete/$', todolist.views.delete_goal, name='delete-goal'),
     url(r'^tasks/$', todolist.views.view_tasks, name='view-tasks'),
+    url(r'^goal/(\d+)/tags/update/$', todolist.views.update_tags, name='update-tags'),
+    url(r'^tags/(\w+)/$', todolist.views.view_tag, name='view-tag'),
     (r'^static/(?P<path>.*)$', 'django.views.static.serve',
             {'document_root': settings.STATIC_DOC_ROOT}),
 )

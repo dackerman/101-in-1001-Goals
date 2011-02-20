@@ -1,22 +1,49 @@
 body{
-    font-family:Verdana,sans-serif;
+    font-family:Ubuntu,Verdana,sans-serif;
     font-size:90%;
+    padding:0px;
+    margin:0px;
+}
+
+#content{
+    padding:5px;
+}
+
+.nav_links{
+    margin-bottom:10px;
+    padding:5px;
+    background-color:#333333;
+}
+
+.nav_links > a:link{
+    color:white;
+}
+
+.nav_links > a:visited{
+    color:white;
 }
 
 a:link{
     color:#4878A6;
 }
+
 a:visited{
-    color:#8A9096;
+    color:#4A5056;
 }
+
 a:hover{
     color:#ACB6BF;
 }
+
 a:active{
     color:#4878A6
 }
 
-.nav_links, table{
+.profile_info{
+    float:right;
+}
+
+table{
     margin-bottom:10px;
 }
 
@@ -24,12 +51,48 @@ h1, h2{
     color:#4878A6;
 }
 
-input[type="submit"]{
-    width:150px;
+input[type="submit"], input[type="button"]{
+    width:100px;
     margin:5px;
 }
 
+form {
+    margin:5px 0px 5px 0px;
+}
+
+#datepicker {
+    font-size:8px;
+}
+
+.edit_box{
+    float:left;
+    clear:both;
+    margin:5px;
+}
+
+.ui-button-text {
+    font-size:12px;
+}
+
+.goal_tag{
+    color:black;
+    border:2px solid #888;
+    border-radius:5px;
+    float:left;
+    margin-left:3px;
+    padding:0px 5px 0px 5px;
+}
+
+.edit_box form, .edit_box table{
+    background-color:#ddeeff;
+    border:2px solid black;
+    border-radius:5px;
+    padding:5px;
+}
+
 table{
+    float:left;
+    clear:both;
     border-spacing:0px;
     border:2px solid black;
     border-radius:5px;
@@ -39,7 +102,7 @@ td{
     padding:5px;
 }
 
-th{
+th, tfoot td{
     background-color:#4878A6;
     color:white;
     padding:5px;
