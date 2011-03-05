@@ -1,15 +1,13 @@
 {% url view-goal goal.id as goal_url %}
-<li>
+<li class="goal">
     {% with goal.todoitem_set.count as task_count %}
-        <h3>
-            <a href="{{ goal_url }}" title="due {{ goal.deadline }}">{{ goal.name }}</a>
-            {% if task_count == 0 %}
-                <span class="num_tasks no_tasks">
-            {% else %}
-                <span class="num_tasks">
-            {% endif %}
-                ({{ task_count }} tasks)
-            </span>
-        </h3>
+        <a href="{{ goal_url }}" title="due {{ goal.deadline }}">{{ goal.name }}</a>
+        {% if task_count == 0 %}
+            <span class="num_tasks no_tasks">
+        {% else %}
+            <span class="num_tasks">
+        {% endif %}
+            ({{ task_count }} tasks)
+        </span>
     {% endwith %}
 </li>

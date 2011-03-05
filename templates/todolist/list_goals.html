@@ -23,7 +23,7 @@
 {% endif %}
 
 {% for category in categories %}
-        <li><h2>{{ category.name }}</h2></li>
+        <li class="category">{{ category.name }}</li>
         <ol>
         {% with category.goal_set.all as goals %}
         {% if goals %}

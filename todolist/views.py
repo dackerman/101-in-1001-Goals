@@ -13,9 +13,15 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
 def render(request, template, data):
-    data.update({'username': request.user.username})
+    data.update({
+                 'username': request.user.username,
+                 'mobile': is_mobile(request),
+                 })
     data.update(csrf(request))
     return render_to_response(template, data)
+
+def is_mobile(request):
+    return not (request.META['HTTP_USER_AGENT'].find("Android") == -1)
 
 class GoalForm(ModelForm):
     def two_years():

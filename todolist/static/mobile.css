@@ -1,0 +1,203 @@
+body{
+    font-family:Ubuntu,Verdana,sans-serif;
+    padding:0px;
+    margin:0px;
+}
+
+#content{
+    padding:0px;
+}
+
+.nav_links{
+    margin-bottom:10px;
+    padding:5px;
+    background-color:#333;
+    height:50px;
+}
+
+.nav_links a{
+    margin-left:10px;
+}
+
+.nav_links a:link{
+    color:white;
+}
+
+.nav_links a:visited{
+    color:white;
+}
+
+.nav_links a:hover{
+    color:4878A6;
+}
+
+a:link{
+    color:#4878A6;
+}
+
+a:visited{
+    color:#4878A6;
+}
+
+a:hover{
+    color:#000;
+}
+
+a:active{
+    color:#4878A6
+}
+
+.profile_info{
+    float:right;
+}
+
+table{
+    margin-bottom:10px;
+}
+
+h1, h2{
+    color:#4878A6;
+}
+
+ol{
+	padding:0em;
+	margin:0;
+}
+
+li{
+	margin:0px;
+	padding:0px;
+	list-style: none;
+}
+
+li.category{
+	background-color:#4878A6;
+	color:white;
+	padding:10px;
+	margin:0;
+}
+
+li.goal{
+	padding:20px;
+	border-bottom:2px dashed #ddd;
+}
+
+li.task{
+	padding:20px;
+	border:none;
+	border-radius:0;
+	border-bottom:2px dashed #ddd;
+	height:50px;
+}
+
+.num_tasks{
+    font-size:90%;
+    font-weight:normal;
+}
+
+.no_tasks{
+    color:red;
+}
+
+input[type="submit"], input[type="button"]{
+    margin:5px;
+}
+
+form {
+    margin:5px 0px 5px 0px;
+}
+
+#datepicker {
+    font-size:8px;
+}
+
+.edit_box{
+    float:left;
+    clear:both;
+    margin:5px;
+}
+
+.ui-button-text {
+    font-size:12px;
+}
+
+.goal_tag{
+    color:black;
+    border:2px solid #888;
+    border-radius:5px;
+    float:left;
+    margin-left:3px;
+    padding:0px 5px 0px 5px;
+}
+
+.edit_box form, .edit_box table{
+    background-color:#ddeeff;
+    border:2px solid black;
+    border-radius:5px;
+    padding:5px;
+}
+
+table{
+    float:left;
+    clear:both;
+    border-spacing:0px;
+    border:2px solid black;
+    border-radius:5px;
+}
+
+.goal_list{
+    float:left;
+    clear:both;
+}
+
+.goal_list table{
+    min-width:800px;
+}
+
+.new_goal{
+	display:none;
+    padding:5px;
+    float:none;
+    clear:both;
+}
+
+.new_goal form{
+	float:none;
+	clear:both;
+}
+
+.new_goal table{
+	float:none;
+	clear:both;
+}
+
+.new_goal_text{
+    color:#333;
+}
+
+form{
+    float:left;
+    clear:both;
+}
+
+td{
+    padding:5px;
+}
+
+th, tfoot td{
+    background-color:#4878A6;
+    color:white;
+    padding:5px;
+}
+
+.odd{
+    background-color:#ddeeff;
+}
+
+.even{
+    background-color:#ffffff;
+}
+
+.last{
+    background-color:#aaffaa;
+}
