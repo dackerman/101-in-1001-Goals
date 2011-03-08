@@ -2,6 +2,7 @@ import datetime
 import django
 from django import forms
 from django.db import models
+from django.contrib.auth.models import User
 from django.forms import ModelForm
 
 
@@ -12,6 +13,7 @@ class Category(models.Model):
         return self.name
 
 class Goal(models.Model):
+    owner = models.ForeignKey(User)
     name = models.CharField("Name", max_length=200)
     deadline = models.DateTimeField("Due", 'completion date')
     category = models.ForeignKey(Category, null=True, blank=True)

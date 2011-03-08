@@ -51,17 +51,18 @@ a:active{
     float:right;
 }
 
-table{
-    margin-bottom:10px;
-}
-
-h1, h2{
+h1, h2, .blue_text{
     color:#4878A6;
 }
 
 .num_tasks{
     font-size:90%;
     font-weight:normal;
+}
+
+.category{
+	font-size:1.7em;
+	margin-top:20px;
 }
 
 .no_tasks{
@@ -90,15 +91,6 @@ form {
     font-size:12px;
 }
 
-.goal_tag{
-    color:black;
-    border:2px solid #888;
-    border-radius:5px;
-    float:left;
-    margin-left:3px;
-    padding:0px 5px 0px 5px;
-}
-
 .edit_box form, .edit_box table{
     background-color:#ddeeff;
     border:2px solid black;
@@ -106,12 +98,12 @@ form {
     padding:5px;
 }
 
-table{
+.new_goal table{
     float:left;
     clear:both;
     border-spacing:0px;
-    border:2px solid black;
     border-radius:5px;
+    background-color:#ddd;
 }
 
 .goal_list{
@@ -130,8 +122,13 @@ table{
 }
 
 .new_goal_text{
-    color:#333;
+    color:#aaa;
     float:right;
+    font-weight:bold;
+}
+
+li.goal{
+	margin-top:5px;
 }
 
 form{
@@ -139,14 +136,19 @@ form{
     clear:both;
 }
 
-td{
-    padding:5px;
+table{
+	border-collapse:collapse;
+	border:0;
 }
 
 th, tfoot td{
     background-color:#4878A6;
     color:white;
     padding:5px;
+}
+
+td{
+	padding:5px;
 }
 
 .odd{

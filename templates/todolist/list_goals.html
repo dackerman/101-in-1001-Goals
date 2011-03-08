@@ -2,7 +2,7 @@
 
 {% block content %}
 <div id="new_goal" class="new_goal">
-<h2 class="new_goal_text">Create a New Goal</h2>
+<div class="new_goal_text">Create a New Goal</div>
 
 	<form method="post" action="">{% csrf_token %}
             <table>
@@ -13,17 +13,19 @@
 	</form>
 </div>
 
-<h1>{{ goal_length }} goals total</h1>
+<div class="category blue_text">
+	<strong>{{ goal_length }}</strong> goals total
+</div>
 <ol>
 {% if goals_without_categories %}
-        <li><h2>No Category</h2></li>
+        <li class="category blue_text">No Category</li>
         {% for goal in goals_without_categories %}
                 {% include "todolist/goal_row.html" %}
         {% endfor %}
 {% endif %}
 
 {% for category in categories %}
-        <li class="category">{{ category.name }}</li>
+        <li class="category blue_text">{{ category.name }}</li>
         <ol>
         {% with category.goal_set.all as goals %}
         {% if goals %}
